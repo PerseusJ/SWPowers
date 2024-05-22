@@ -1,0 +1,47 @@
+name: SWPowers
+version: '${project.version}'
+main: staff.swpowers.SWPowers
+api-version: '1.20'
+
+commands:
+  powers:
+    description: Opens the Force Powers GUI
+    usage: /powers
+
+permissions:
+  staff.forcepush:
+    description: Allows use of Force Push
+    default: op
+  staff.forcemeditate:
+    description: Allows use of Force Meditate
+    default: op
+  staff.forcelevitate:
+    description: Allows use of Force Levitate
+    default: op
+  staff.forcefreeze:
+    description: Allows use of Force Freeze
+    default: op
+  staff.forcechoke:
+    description: Allows use of Force Choke
+    default: op
+  staff.forcepull:
+    description: Allows use of Force Pull
+    default: op
+  staff.forcemalacia:
+    description: Allows use of Force Malacia
+    default: op
+  staff.darkaura:
+    description: Allows use of Dark Aura
+    default: op
+  staff.forcerepulse:
+    description: Allows use of Force Repulse
+    default: op
+  staff.forcelightning:
+    description: Allows use of Force Lightning
+    default: op
+  staff.electricjudgement:
+    description: Allows use of Electric Judgement
+    default: op
+  staff.forcejump:
+    description: Allows use of Double Jump
+    default: op
