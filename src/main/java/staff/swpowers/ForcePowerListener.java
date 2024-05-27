@@ -126,7 +126,7 @@ public class ForcePowerListener implements Listener {
             event.setCancelled(true); // Cancel the event to prevent any unintended interactions
         }
 
-        if (forcePowersActive.getOrDefault(playerId, false)) {
+        if (forcePowersActive.getOrDefault(playerId, false) && event.getAction().equals(Action.LEFT_CLICK_AIR)) {
             int currentSlot = player.getInventory().getHeldItemSlot();
             List<String> playerPowers = powerSlots.getOrDefault(playerId, new ArrayList<>());
 
