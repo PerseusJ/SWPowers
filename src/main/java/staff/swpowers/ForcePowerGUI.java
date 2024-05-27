@@ -19,10 +19,10 @@ public class ForcePowerGUI {
     };
 
     private static final String[] customItems = {
-            "tgbitems:clusteramber", "swpowers:force_meditate", "swpowers:force_levitate",
-            "swpowers:force_freeze", "swpowers:force_choke", "swpowers:force_pull",
-            "swpowers:force_malacia", "swpowers:dark_aura", "swpowers:force_repulse",
-            "swpowers:force_lightning", "swpowers:electric_judgement", "swpowers:force_jump",
+            "tgbitems:crystalgreen", "tgbitems:crystalblue", "tgbitems:crystalyellow",
+            "tgbitems:crystalcyan", "tgbitems:crystalred", "tgbitems:crystallime",
+            "tgbitems:crystalpurple", "tgbitems:crystalmagenta", "tgbitems:crystalamber",
+            "tgbitems:crystalblue", "tgbitems:crystalamber", "tgbitems:crystalwhite",
     };
 
     private static final String[] names = {
