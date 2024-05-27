@@ -8,6 +8,8 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import dev.lone.itemsadder.api.CustomStack;
+
 public class ForcePowerGUI {
     private static final String[] powers = {
             "staff.forcepush", "staff.forcemeditate", "staff.forcelevitate",
@@ -16,11 +18,11 @@ public class ForcePowerGUI {
             "staff.forcelightning", "staff.electricjudgement", "staff.forcejump"
     };
 
-    private static final Material[] materials = {
-            Material.ENDER_PEARL, Material.BLUE_ORCHID, Material.FEATHER,
-            Material.ICE, Material.END_ROD, Material.TRIPWIRE_HOOK,
-            Material.FERMENTED_SPIDER_EYE, Material.ENDER_EYE, Material.IRON_DOOR,
-            Material.BLUE_DYE, Material.ORANGE_DYE, Material.RABBIT_FOOT
+    private static final String[] customItems = {
+            "tgbitems:clusteramber", "swpowers:force_meditate", "swpowers:force_levitate",
+            "swpowers:force_freeze", "swpowers:force_choke", "swpowers:force_pull",
+            "swpowers:force_malacia", "swpowers:dark_aura", "swpowers:force_repulse",
+            "swpowers:force_lightning", "swpowers:electric_judgement", "swpowers:force_jump",
     };
 
     private static final String[] names = {
@@ -38,11 +40,14 @@ public class ForcePowerGUI {
         for (int i = 0; i < powers.length; i++) {
             if (player.hasPermission(powers[i]) || player.isOp()) {
                 if (powersAdded >= (5 * (page - 1)) && powersAdded < (5 * page)) {
-                    ItemStack item = new ItemStack(materials[i]);
-                    ItemMeta meta = item.getItemMeta();
-                    meta.setDisplayName(names[i]);
-                    item.setItemMeta(meta);
-                    inv.setItem(slotIndex++, item);
+                    CustomStack customStack = CustomStack.getInstance(customItems[i]);
+                    if (customStack != null) {
+                        ItemStack item = customStack.getItemStack();
+                        ItemMeta meta = item.getItemMeta();
+                        meta.setDisplayName(names[i]);
+                        item.setItemMeta(meta);
+                        inv.setItem(slotIndex++, item);
+                    }
                 }
                 powersAdded++;
             }
