@@ -71,7 +71,7 @@ public class ForceRepulse {
                 }
                 spawnRepulseReleaseParticles(player.getLocation()); // Spawn the release particles
             }
-        }.runTaskLater(plugin, 60L); // 20 ticks = 3 second delay
+        }.runTaskLater(plugin, 40L); // 40 ticks = 2 second delay
 
         lastForceRepulse.put(playerId, currentTime); // Record the time when repulse was last used
         player.performCommand("emote repulse"); // Perform the repulse emote command

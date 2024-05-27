@@ -7,7 +7,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -17,9 +22,12 @@ import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.GameMode;
-import staff.swpowers.powers.*;
+import org.bukkit.event.player.PlayerGameModeChangeEvent;
+import org.bukkit.metadata.FixedMetadataValue;
 
 import java.util.*;
+
+import staff.swpowers.powers.*;
 
 public class ForcePowerListener implements Listener {
     private final SWPowers plugin;
@@ -212,6 +220,7 @@ public class ForcePowerListener implements Listener {
                             }
                             break;
                     }
+                    event.setCancelled(true); // Cancel the event to prevent any unintended interactions
                 }
             }
         }
@@ -311,8 +320,7 @@ public class ForcePowerListener implements Listener {
 
             List<String> playerPowers = powerSlots.getOrDefault(playerId, new ArrayList<>());
             Boolean isPowerActive = forcePowersActive.getOrDefault(playerId, false);
-
-            if (currentSlot < playerPowers.size() && playerPowers.get(currentSlot) != null && isPowerActive){
+            if (currentSlot < playerPowers.size() && playerPowers.get(currentSlot) != null && isPowerActive) {
                 String selectedPower = playerPowers.get(currentSlot);
                 switch (selectedPower) {
                     case "Force Push":
@@ -342,8 +350,9 @@ public class ForcePowerListener implements Listener {
                     case "Electric Judgement":
                         electricJudgement.execute(player);
                         break;
-// Other cases...
+                    // Other cases...
                 }
+
                 event.setCancelled(true);
             }
         }
@@ -462,9 +471,49 @@ public class ForcePowerListener implements Listener {
 
                         // Update the scoreboard
                         updateForcePowerScoreboard(player);
+
+                        // Save the selected force powers for the player
+                        saveSelectedForcePowers(player);
                     }
                 }
             }
         }
+    }
+
+    private void saveSelectedForcePowers(Player player) {
+        UUID playerId = player.getUniqueId();
+        List<String> playerPowers = powerSlots.getOrDefault(playerId, new ArrayList<>());
+
+        // Convert the list of force powers to a string
+        String forcePowersString = String.join(",", playerPowers);
+
+        // Save the force powers string to the player's persistent data
+        player.setMetadata("selectedForcePowers", new FixedMetadataValue(plugin, forcePowersString));
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
+        UUID playerId = player.getUniqueId();
+
+        // Load the selected force powers for the player
+        if (player.hasMetadata("selectedForcePowers")) {
+            String forcePowersString = player.getMetadata("selectedForcePowers").get(0).asString();
+            String[] forcePowers = forcePowersString.split(",");
+            List<String> playerPowers = Arrays.asList(forcePowers);
+            powerSlots.put(playerId, playerPowers);
+
+            // Update the scoreboard
+            updateForcePowerScoreboard(player);
+        }
+    }
+
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent event) {
+        Player player = event.getPlayer();
+        UUID playerId = player.getUniqueId();
+
+        // Remove the selected force powers for the player
+        powerSlots.remove(playerId);
     }
 }
