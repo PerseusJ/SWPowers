@@ -1,10 +1,10 @@
-package staff.swpowers.powers;
+package powers.swpowers.powers;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import staff.swpowers.SWPowers;
+import powers.swpowers.SWPowers;
 
 import java.util.HashMap;
 import java.util.UUID;

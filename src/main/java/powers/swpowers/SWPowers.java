@@ -1,4 +1,4 @@
-package staff.swpowers;
+package powers.swpowers;
 
 import org.bukkit.plugin.java.JavaPlugin;
 

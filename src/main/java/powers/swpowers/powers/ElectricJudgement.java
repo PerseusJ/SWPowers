@@ -1,11 +1,11 @@
-package staff.swpowers.powers;
+package powers.swpowers.powers;
 
 import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
-import staff.swpowers.SWPowers;
+import powers.swpowers.SWPowers;
 
 import java.util.HashMap;
 import java.util.List;

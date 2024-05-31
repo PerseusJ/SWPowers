@@ -1,6 +1,5 @@
-package staff.swpowers.powers;
+package powers.swpowers.powers;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -8,7 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
-import staff.swpowers.SWPowers;
+import powers.swpowers.SWPowers;
 
 import java.util.HashMap;
 import java.util.List;

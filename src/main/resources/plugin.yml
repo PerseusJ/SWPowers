@@ -1,6 +1,6 @@
 name: SWPowers
 version: '${project.version}'
-main: staff.swpowers.SWPowers
+main: powers.swpowers.SWPowers
 api-version: '1.20'
 softdepend: [ItemsAdder]
 
@@ -10,39 +10,39 @@ commands:
     usage: /powers
 
 permissions:
-  staff.forcepush:
+  powers.forcepush:
     description: Allows use of Force Push
     default: op
-  staff.forcemeditate:
+  powers.forcemeditate:
     description: Allows use of Force Meditate
     default: op
-  staff.forcelevitate:
+  powers.forcelevitate:
     description: Allows use of Force Levitate
     default: op
-  staff.forcefreeze:
+  powers.forcefreeze:
     description: Allows use of Force Freeze
     default: op
-  staff.forcechoke:
+  powers.forcechoke:
     description: Allows use of Force Choke
     default: op
-  staff.forcepull:
+  powers.forcepull:
     description: Allows use of Force Pull
     default: op
-  staff.forcemalacia:
+  powers.forcemalacia:
     description: Allows use of Force Malacia
     default: op
-  staff.darkaura:
+  powers.darkaura:
     description: Allows use of Dark Aura
     default: op
-  staff.forcerepulse:
+  powers.forcerepulse:
     description: Allows use of Force Repulse
     default: op
-  staff.forcelightning:
+  powers.forcelightning:
     description: Allows use of Force Lightning
     default: op
-  staff.electricjudgement:
+  powers.electricjudgement:
     description: Allows use of Electric Judgement
     default: op
-  staff.forcejump:
+  powers.forcejump:
     description: Allows use of Double Jump
     default: op

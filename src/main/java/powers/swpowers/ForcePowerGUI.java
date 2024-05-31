@@ -1,4 +1,4 @@
-package staff.swpowers;
+package powers.swpowers;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -12,10 +12,10 @@ import dev.lone.itemsadder.api.CustomStack;
 
 public class ForcePowerGUI {
     private static final String[] powers = {
-            "staff.forcepush", "staff.forcemeditate", "staff.forcelevitate",
-            "staff.forcefreeze", "staff.forcechoke", "staff.forcepull",
-            "staff.forcemalacia", "staff.darkaura", "staff.forcerepulse",
-            "staff.forcelightning", "staff.electricjudgement", "staff.forcejump"
+            "powers.forcepush", "powers.forcemeditate", "powers.forcelevitate",
+            "powers.forcefreeze", "powers.forcechoke", "powers.forcepull",
+            "powers.forcemalacia", "powers.darkaura", "powers.forcerepulse",
+            "powers.forcelightning", "powers.electricjudgement", "powers.forcejump"
     };
 
     private static final String[] customItems = {

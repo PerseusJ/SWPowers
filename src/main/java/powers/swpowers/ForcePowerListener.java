@@ -1,4 +1,4 @@
-package staff.swpowers;
+package powers.swpowers;
 
 import org.bukkit.*;
 import org.bukkit.entity.Player;
@@ -7,12 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.util.Vector;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -22,12 +17,11 @@ import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.GameMode;
-import org.bukkit.event.player.PlayerGameModeChangeEvent;
 import org.bukkit.metadata.FixedMetadataValue;
 
 import java.util.*;
 
-import staff.swpowers.powers.*;
+import powers.swpowers.powers.*;
 
 public class ForcePowerListener implements Listener {
     private final SWPowers plugin;
@@ -143,77 +137,77 @@ public class ForcePowerListener implements Listener {
                 if (selectedPower != null) {
                     switch (selectedPower) {
                         case "Force Push":
-                            if (player.hasPermission("staff.forcepush")) {
+                            if (player.hasPermission("powers.forcepush")) {
                                 forcePush.execute(player);
                             } else {
                                 player.sendMessage(ChatColor.RED + "You do not have permission to use Force Push.");
                             }
                             break;
                         case "Force Meditate":
-                            if (player.hasPermission("staff.forcemeditate")) {
+                            if (player.hasPermission("powers.forcemeditate")) {
                                 forceMeditate.execute(player);
                             } else {
                                 player.sendMessage(ChatColor.RED + "You do not have permission to use Force Meditate.");
                             }
                             break;
                         case "Force Levitate":
-                            if (player.hasPermission("staff.forcelevitate")) {
+                            if (player.hasPermission("powers.forcelevitate")) {
                                 forceLevitate.execute(player);
                             } else {
                                 player.sendMessage(ChatColor.RED + "You do not have permission to use Force Levitate.");
                             }
                             break;
                         case "Force Freeze":
-                            if (player.hasPermission("staff.forcefreeze")) {
+                            if (player.hasPermission("powers.forcefreeze")) {
                                 forceFreeze.execute(player);
                             } else {
                                 player.sendMessage(ChatColor.RED + "You do not have permission to use Force Freeze.");
                             }
                             break;
                         case "Force Choke":
-                            if (player.hasPermission("staff.forcechoke")) {
+                            if (player.hasPermission("powers.forcechoke")) {
                                 forceChoke.execute(player);
                             } else {
                                 player.sendMessage(ChatColor.RED + "You do not have permission to use Force Choke.");
                             }
                             break;
                         case "Force Pull":
-                            if (player.hasPermission("staff.forcepull")) {
+                            if (player.hasPermission("powers.forcepull")) {
                                 forcePull.execute(player);
                             } else {
                                 player.sendMessage(ChatColor.RED + "You do not have permission to use Force Pull.");
                             }
                             break;
                         case "Force Malacia":
-                            if (player.hasPermission("staff.forcemalacia")) {
+                            if (player.hasPermission("powers.forcemalacia")) {
                                 forceMalacia.execute(player);
                             } else {
                                 player.sendMessage(ChatColor.RED + "You do not have permission to use Force Malacia.");
                             }
                             break;
                         case "Dark Aura":
-                            if (player.hasPermission("staff.darkaura")) {
+                            if (player.hasPermission("powers.darkaura")) {
                                 darkAura.execute(player);
                             } else {
                                 player.sendMessage(ChatColor.RED + "You do not have permission to use Dark Aura.");
                             }
                             break;
                         case "Force Repulse":
-                            if (player.hasPermission("staff.forcerepulse")) {
+                            if (player.hasPermission("powers.forcerepulse")) {
                                 forceRepulse.execute(player);
                             } else {
                                 player.sendMessage(ChatColor.RED + "You do not have permission to use Force Repulse.");
                             }
                             break;
                         case "Force Lightning":
-                            if (player.hasPermission("staff.forcelightning")) {
+                            if (player.hasPermission("powers.forcelightning")) {
                                 forceLightning.execute(player);
                             } else {
                                 player.sendMessage(ChatColor.RED + "You do not have permission to use Force Lightning.");
                             }
                             break;
                         case "Electric Judgement":
-                            if (player.hasPermission("staff.electricjudgement")) {
+                            if (player.hasPermission("powers.electricjudgement")) {
                                 electricJudgement.execute(player);
                             } else {
                                 player.sendMessage(ChatColor.RED + "You do not have permission to use Electric Judgement.");
@@ -237,7 +231,7 @@ public class ForcePowerListener implements Listener {
         if (p.hasPotionEffect(PotionEffectType.SLOW)) {
             return;
         }
-        if (forcePowersActive.getOrDefault(p.getUniqueId(), false) && p.hasPermission("staff.forcejump")) {
+        if (forcePowersActive.getOrDefault(p.getUniqueId(), false) && p.hasPermission("powers.forcejump")) {
             List<String> playerPowers = powerSlots.getOrDefault(p.getUniqueId(), new ArrayList<>());
             int currentSlot = p.getInventory().getHeldItemSlot();
             String selectedPower = currentSlot < playerPowers.size() ? playerPowers.get(currentSlot) : null;
@@ -265,7 +259,7 @@ public class ForcePowerListener implements Listener {
             return;
         }
 
-        if (!player.hasPermission("staff.forcejump")) {
+        if (!player.hasPermission("powers.forcejump")) {
             return;
         }
 
@@ -303,7 +297,7 @@ public class ForcePowerListener implements Listener {
             Player p = (Player) e.getEntity();
             if (e.getCause() == EntityDamageEvent.DamageCause.FALL) {
                 // Check if the player has the permission for Double Jump
-                if (p.hasPermission("staff.forcejump")) {
+                if (p.hasPermission("powers.forcejump")) {
                     // Cancel the fall damage if the player has the permission
                     e.setCancelled(true);
                 }
